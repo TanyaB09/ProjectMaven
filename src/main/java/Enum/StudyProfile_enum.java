@@ -1,3 +1,5 @@
+package Enum;
+
 public class StudyProfile_enum {
 
     public enum Major {

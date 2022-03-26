@@ -1,3 +1,5 @@
+package Enum;
+
 public enum UniversityComparator_enum {
     ID,
     FULL_NAME,
