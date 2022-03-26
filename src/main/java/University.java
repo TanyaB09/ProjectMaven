@@ -1,67 +1,71 @@
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class University {
-    String id;
-    String fullName;
-    String shortName;
-    int yearOfFoundation;
-    String mainProfile;
+    @XmlElement(name = "universityId")
+    private String id;
 
-    public University(String id, String fullName, String shortName, int yearOfFoundation, String mainProfile) {
+    @XmlElement(name = "universityName")
+    private String fullName;
+
+    @XmlTransient
+    private String shortName;
+
+    @XmlTransient
+    private int yearOfFoundation;
+
+    @XmlElement(name = "universityProfile")
+    private String mainProfile;
+
+    public University() {
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public University setFullName(String fullName) {
         this.fullName = fullName;
+        return this;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public University setShortName(String shortName) {
         this.shortName = shortName;
+        return this;
+    }
+
+    public int getYearOfFoundation() {
+        return yearOfFoundation;
+    }
+
+    public University setYearOfFoundation(int yearOfFoundation) {
         this.yearOfFoundation = yearOfFoundation;
+        return this;
+    }
+
+    public String getMainProfile() {
+        return mainProfile;
+    }
+
+    public University setMainProfile(String mainProfile) {
         this.mainProfile = mainProfile;
+        return this;
     }
-
-    private University(Builder builder) {
-        id = builder.id;
-        fullName = builder.fullName;
-        shortName = builder.shortName;
-        yearOfFoundation = builder.yearOfFoundation;
-        mainProfile = builder.mainProfile;
-    }
-
-
-    public static final class Builder {
-        private String id;
-        private String fullName;
-        private String shortName;
-        private int yearOfFoundation;
-        private String mainProfile;
-
-        public Builder() {
-        }
-
-        public Builder id(String val) {
-            id = val;
-            return this;
-        }
-
-        public Builder fullName(String val) {
-            fullName = val;
-            return this;
-        }
-
-        public Builder shortName(String val) {
-            shortName = val;
-            return this;
-        }
-
-        public Builder yearOfFoundation(int val) {
-            yearOfFoundation = val;
-            return this;
-        }
-
-        public Builder mainProfile(String val) {
-            mainProfile = val;
-            return this;
-        }
-
-        public University build() {
-            return new University(this);
-        }
-    }
-
 
     @Override
     public String toString() {

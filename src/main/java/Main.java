@@ -1,20 +1,20 @@
+import java.io.IOException;
+import java.util.List;
+
 public class Main {
-    public static void main(String[] args) {
-        University iab = new University(
-                "IAB",
-                "International Academy of Business",
-                "IAB",
-                1980,
-                StudyProfile_enum.Major.LAW.getMajor()
-        );
 
-        Student student1 = new Student(
-                "Иванов Кайрат Олегович",
-                "IAB",
-                2,
-                3.2f);
+    public static void main(String[] args) throws IOException {
 
-        System.out.println(iab);
-        System.out.println(student1);
+        List<University> universities =
+                ExcelReader.readExcelUniversities("src/main/resources/universityInfo.xlsx");
+        for(University university : universities) {
+            System.out.println(university);
+        }
+
+        List<Student> students =
+                ExcelReader.readExcelStudents("src/main/resources/universityInfo.xlsx");
+        for(Student student : students) {
+            System.out.println(student);
+        }
     }
 }

@@ -1,55 +1,60 @@
+
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlTransient;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Student {
-    String fullName;
-    String universityId;
-    int currentCourseNumber;
-    float avgExamScore;
+    @XmlElement(name = "studentName")
+    private String fullName;
 
-    public Student(String fullName, String universityId, int currentCourseNumber, float avgExamScore) {
+    @XmlElement(name = "universityId")
+    private String universityId;
+
+    @XmlTransient
+    private int currentCourseNumber;
+
+    @XmlElement(name = "avgScore")
+    private float avgExamScore;
+
+    public Student() {
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public Student setFullName(String fullName) {
         this.fullName = fullName;
+        return this;
+    }
+
+    public String getUniversityId() {
+        return universityId;
+    }
+
+    public Student setUniversityId(String universityId) {
         this.universityId = universityId;
+        return this;
+    }
+
+    public int getCurrentCourseNumber() {
+        return currentCourseNumber;
+    }
+
+    public Student setCurrentCourseNumber(int currentCourseNumber) {
         this.currentCourseNumber = currentCourseNumber;
+        return this;
+    }
+
+    public float getAvgExamScore() {
+        return avgExamScore;
+    }
+
+    public Student setAvgExamScore(float avgExamScore) {
         this.avgExamScore = avgExamScore;
-    }
-
-    private Student(Builder builder) {
-        fullName = builder.fullName;
-        universityId = builder.universityId;
-        currentCourseNumber = builder.currentCourseNumber;
-        avgExamScore = builder.avgExamScore;
-    }
-
-    public static final class Builder {
-        private String fullName;
-        private String universityId;
-        private int currentCourseNumber;
-        private float avgExamScore;
-
-        public Builder() {
-        }
-
-        public Builder fullName(String val) {
-            fullName = val;
-            return this;
-        }
-
-        public Builder universityId(String val) {
-            universityId = val;
-            return this;
-        }
-
-        public Builder currentCourseNumber(int val) {
-            currentCourseNumber = val;
-            return this;
-        }
-
-        public Builder avgExamScore(float val) {
-            avgExamScore = val;
-            return this;
-        }
-
-        public Student build() {
-            return new Student(this);
-        }
+        return this;
     }
 
     @Override
